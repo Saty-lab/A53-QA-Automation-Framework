@@ -1,13 +1,12 @@
-package PageObject;
+package Pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 
-public class playSong extends BasePage {
-    public playSong(WebDriver givenDriver) {
+public class PlaySongPage extends BasePage {
+    public PlaySongPage(WebDriver givenDriver) {
         super(givenDriver);
     }
 
@@ -20,19 +19,19 @@ public class playSong extends BasePage {
 
     //page Methods
 
-    public void findMusicButton() throws Throwable{
+    public void findMusicButton() {
         findElementUsingByLocator(music);
     }
-    public void clickPlaySongButton() throws Throwable{
+    public void clickPlaySongButton() {
         mouse.moveToElement(findElementUsingByLocator(music)).build().perform();
         findElementUsingByLocator(musicControl).click();
     }
-    public void clickNextSong() throws Throwable {
+    public void clickNextSong() {
         findElementUsingByLocator(playNextSong).click();
         mouse.moveToElement(findElementUsingByLocator(music)).build().perform();
     }
 
-    public void pauseSong() throws Throwable {
+    public void pauseSong() {
         WebElement pauseButton = findElementUsingByLocator(this.pauseButton);
         boolean status = pauseButton.isDisplayed();
         Assert.assertTrue(status);

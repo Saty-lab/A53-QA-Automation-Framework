@@ -1,4 +1,4 @@
-package PageObject;
+package Pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -31,7 +31,7 @@ public class LoginPage extends BasePage {
         findElementUsingByLocator(submitBtn).click();
     }
 
-    public void verifyLogin() throws Throwable {
+    public void verifyLogin() {
         WebElement music = findElementUsingByLocator(yourMusic);
         boolean status = music.isEnabled();
         Assert.assertTrue(status);
