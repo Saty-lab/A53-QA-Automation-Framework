@@ -39,7 +39,7 @@ public class playSong extends BasePage {
         WebElement pauseButton = findElementUsingByLocator(this.pauseButton);
         boolean status = pauseButton.isDisplayed();
         Assert.assertTrue(status);
-        System.out.println("Homework 23 is done");
+        System.out.println("Homework 24 is done");
         return playNextSong;
     }
 }
