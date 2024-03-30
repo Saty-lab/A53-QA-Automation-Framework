@@ -5,8 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
 
-public class playSong extends BasePage {
-    public playSong(WebDriver givenDriver) {
+public class playSongPage extends BasePage {
+    public playSongPage(WebDriver givenDriver) {
         super(givenDriver);
     }
 
