@@ -82,6 +82,45 @@ public class BaseTest {
         getDriver().get(BaseUrl);
     }
 
+
+    public WebDriver pickBrowser(String browser) throws MalformedURLException {
+        DesiredCapabilities caps = new DesiredCapabilities();
+        String gridURL = "http://192.168.1.11:4444/";
+        switch(browser){
+            case "firefox":
+                WebDriverManager.firefoxdriver().setup();
+                return driver = new FirefoxDriver();
+
+            case "MicrosoftEdge":
+                WebDriverManager.edgedriver().setup();
+                EdgeOptions edgeOptions = new EdgeOptions();
+                edgeOptions.addArguments("--remote-allow-origins=*");
+                return driver = new EdgeDriver();
+
+            case "grid-edge": // gradle clean test -Dbrowser=grid-edge
+                caps.setCapability("browserName", "MicrosoftEdge");
+                return driver = new RemoteWebDriver(URI.create(gridURL).toURL(), caps);
+
+            case "grid-firefox": // gradle clean test -Dbrowser=grid-firefox
+                caps.setCapability("browserName", "firefox");
+                return driver = new RemoteWebDriver(URI.create(gridURL).toURL(), caps);
+
+            case "grid-chrome":
+                caps.setCapability("browserName", "chrome");
+                return driver = new RemoteWebDriver(URI.create(gridURL).toURL(),caps);
+
+            case "cloud":
+                return lambdaTest();
+
+            default:
+                WebDriverManager.chromedriver().clearDriverCache().setup();
+                ChromeOptions options = new ChromeOptions();
+                options.addArguments("--remote-allow-origins=*");
+                //Manage Browser - wait for 10 seconds before failing/quitting.
+                return driver = new ChromeDriver(options);
+        }
+    }
+
     public WebDriver lambdaTest() throws MalformedURLException {
         String hubURL = "https://hub.lambdatest.com/wd/hub";
         DesiredCapabilities capabilities = new DesiredCapabilities();
@@ -104,42 +143,10 @@ public class BaseTest {
         ltOptions.put("driver_version", "120.0");
         ltOptions.put("w3c", true);
         ltOptions.put("plugin", "java-testNG");
-        //  browserOptions.setCapability("LT:Options", ltOptions);
         capabilities.setCapability("LT:Options", ltOptions);
 
         return new RemoteWebDriver(new URL(hubURL),capabilities);
     }
-    public WebDriver pickBrowser(String browser) throws MalformedURLException {
-        DesiredCapabilities caps = new DesiredCapabilities();
-        String gridURL = "http://192.168.1.2:4444";
-        switch(browser) {
-            case "firefox":
-                WebDriverManager.firefoxdriver().setup();
-                return driver = new FirefoxDriver();
-            case "MicrosoftEdge":
-                WebDriverManager.edgedriver().setup();
-                EdgeOptions edgeOptions = new EdgeOptions();
-                edgeOptions.addArguments("--remote-allow-origins=*");
-                return driver = new EdgeDriver(edgeOptions);
-            case "grid-chrome":
-                caps.setCapability("browserName", "chrome");
-                return driver = new RemoteWebDriver(URI.create(gridURL).toURL(), caps);
-            case "grid-firefox":
-                caps.setCapability("browserName", "firefox");
-                return driver = new RemoteWebDriver(URI.create(gridURL).toURL(), caps);
-            case "grid-edge":
-                caps.setCapability("browserName", "MicrosoftEdge");
-                return driver = new RemoteWebDriver(URI.create(gridURL).toURL(), caps);
-            case "cloud":
-                return lambdaTest();
-            default:
-                WebDriverManager.chromedriver().setup();
-                ChromeOptions chromeOptions = new ChromeOptions();
-                chromeOptions.addArguments("--remote-allow-origins=*");
-                return driver = new ChromeDriver(chromeOptions);
-        }
-    }
-
     @AfterMethod
     public void tearDown() {
         threadDriver.get().close();

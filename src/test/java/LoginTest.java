@@ -10,6 +10,7 @@ public class LoginTest extends BaseTest {
         login.providePassword("Lulkerup7710%");
         login.clickSubmit();
         login.verifyLogin();
+        System.out.println("First test");
     }
 
     @Test
@@ -19,5 +20,6 @@ public class LoginTest extends BaseTest {
         login.providePassword("Lulkerup7710%");
         login.clickSubmit();
         login.verifyLogin();
+        System.out.println("second test");
     }
 }
