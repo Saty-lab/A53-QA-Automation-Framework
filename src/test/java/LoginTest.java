@@ -1,12 +1,10 @@
-import PageObject.LoginPage;
+import pages.LoginPage;
 
 import org.testng.annotations.Test;
 
-import static java.sql.DriverManager.getDriver;
-
-public class Homework_25 extends BaseTest {
+public class LoginTest extends BaseTest {
     @Test
-    public void loginWithValidCredentials() throws Throwable {
+    public void loginWithValidCredentials() {
         LoginPage login = new LoginPage(getDriver());
         login.provideEmail("burul.satybaeva@testpro.io");
         login.providePassword("Lulkerup7710%");
@@ -15,7 +13,7 @@ public class Homework_25 extends BaseTest {
     }
 
     @Test
-    public void loginWithValidCredentials2() throws Throwable {
+    public void loginWithValidCredentials2() {
         LoginPage login = new LoginPage(getDriver());
         login.provideEmail("burul.satybaeva@testpro.io");
         login.providePassword("Lulkerup7710%");

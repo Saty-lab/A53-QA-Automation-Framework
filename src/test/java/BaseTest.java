@@ -75,7 +75,7 @@ public class BaseTest {
     @BeforeMethod
     @Parameters({"BaseUrl"})
     public void launchBrowser(String BaseUrl) throws MalformedURLException {
-        threadDriver.set(pickBrowser("cloud"));
+        threadDriver.set(pickBrowser(System.getProperty("browser")));
         getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
         actions = new Actions(getDriver());
@@ -139,6 +139,8 @@ public class BaseTest {
                 return driver = new ChromeDriver(chromeOptions);
         }
     }
+
+    @AfterMethod
     public void tearDown() {
         threadDriver.get().close();
         threadDriver.remove();

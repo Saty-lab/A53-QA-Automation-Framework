@@ -1,4 +1,4 @@
-package PageObject;
+package pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -36,7 +36,7 @@ public class LoginPage extends BasePage {
         submitBtn.click();
         return this;
     }
-    public boolean verifyLogin() throws Throwable {
+    public boolean verifyLogin() {
         boolean status = yourMusic.isEnabled();
         Assert.assertTrue(status);
         return status;
