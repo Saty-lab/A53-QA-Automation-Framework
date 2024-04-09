@@ -12,5 +12,5 @@ public class LoginTest extends BaseTest {
         login.verifyLogin();
         System.out.println("First test");
     }
-    
+
 }
