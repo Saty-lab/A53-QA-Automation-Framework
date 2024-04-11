@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name="TestNg">
+<suite name="TestNG" parallel="methods" thread-count="3">
 
-    <parameter name="BaseUrl" value="https://qa.koel.app"/>
-
-    <test name="Example Test" preserve-order="true">
+    <test name="CucumberRunner Test" preserve-order="false">
         <classes>
-            <class name="Homework_21"/>
+            <class name="CucumberRunner"/>
         </classes>
     </test>
 </suite>
