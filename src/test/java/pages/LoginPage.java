@@ -41,9 +41,5 @@ public class LoginPage extends BasePage {
         Assert.assertTrue(status);
         return status;
     }
-    public void loginWithValidCredentials() {
-        provideEmail("burul.satybaeva@testpro.io");
-        providePassword("Lulkerup7710%");
-        clickSubmit();
-    }
+
 }

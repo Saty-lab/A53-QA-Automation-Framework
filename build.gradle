@@ -10,9 +10,13 @@ repositories {
 }
 
 dependencies {
-        testImplementation 'org.testng:testng:latest.integration'
-        implementation 'org.seleniumhq.selenium:selenium-java:latest.integration'
-        testImplementation 'io.github.bonigarcia:webdrivermanager:latest.integration'
+    testImplementation 'org.testng:testng:latest.integration'
+    implementation 'org.seleniumhq.selenium:selenium-java:latest.integration'
+    testImplementation 'io.github.bonigarcia:webdrivermanager:latest.integration'
+    implementation 'io.cucumber:cucumber-testng:7.9.0'
+    implementation 'io.cucumber:cucumber-core:7.9.0'
+    implementation 'io.cucumber:cucumber-java:7.9.0'
+    implementation 'io.cucumber:gherkin:25.0.2'
 
 }
 
